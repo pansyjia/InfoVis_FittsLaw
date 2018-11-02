@@ -97,7 +97,7 @@
                             <div class="form-group">
                                 <div class="col-lg-10">
                                 <br>
-                                <button type="submit" class="trial" onclick="startTrial()">START TRIAL</button>
+                                <button type="submit" class="trial" onclick="startTrial(); emptyMT()">START TRIAL</button>
                             </div>
                      </div>
                 </fieldset>
@@ -110,9 +110,11 @@
             </div>
         </div>
         <div class="row">
-                <div class="eight columns offset-by-two alpha">
-                    <textarea class="eight columns offset-by-two alpha" id="dataTable">                Width                Distance                Index_of_Difficulty                Movement_Time
-                    </textarea>
+                <div id="infoPanel" class="panel six columns offset-by-three alpha question">
+                <div class="info-label align-center">Movement Time (milliseconds)</div>
+                    <div class="info-group five columns offset-by-four alpha">
+                    <div class="info align-center"><div id="MTime"> </div></div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -127,10 +129,10 @@
             </div>
         </div>
         <div class="row">
-            <div class="three columns offset-by-one alpha">
+            <!-- <div class="three columns offset-by-one alpha">
                 <input type="button" value="Dataset1" id="btnDataset1" onclick="loadDataset('dataset1')" />
                 <input type="button" value="Dataset2" id="btnDataset2" onclick="loadDataset('dataset2')" />
-            </div>
+            </div> -->
         </div>
         <div class="row" style="margin-top:20px;">
             <div class="ten columns offset-by-one alpha">

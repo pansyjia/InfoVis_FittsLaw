@@ -1,8 +1,4 @@
-// var data = [];
-// the variable that holds the data from csv file
-
 var f = d3.format(".1f");
-var trialResults = [];
 
 /////////////////////////////////////////////////////////
 ////Data///////////
@@ -68,7 +64,10 @@ $(document).ready(function () {
     // loadData1();
     // loadData2();
     startTrial();
-    loadDataset("dataset2");
+    drawScatterPlot1(dataset2)
+    drawScatterPlot2(dataset2)
+    drawScatterPlot3(dataset2)
+    // loadDataset("dataset2");
 
 });
 
@@ -100,20 +99,15 @@ $(document).ready(function () {
 ////Pointing Task///////////
 ////////////////////////////////////
 var elems = document.getElementsByClassName("target");
-// console.log(elems);
 var increase = (Math.PI * 2 )/ 9;
-// console.log(elems.length); ///0
 var x_c = 0; var y_c = 0;
 var angle = 0; var radius = 200; var width = 25; var height = 25;
 // var center_top = ($("#slider-1").height() - $("#target-1").height()) / 2;
 var center_top = (450 - 70) / 2;
-// console.log(center_top); ///NaN, 190d
 // var center_left = ($("#slider-1").width() - $("#target-1").width()) / 2;
 var center_left = (450 - 70) / 2;
-// console.log(center_left);
 var count_Click; var curr_time; var next_time; var mt; var dist_Click; var choice_width; var choice_dist;
-var experimentData = []; var fileCSV = [["W", "D", "Actual Distance", "MT"]];
-
+var trialData = []; 
 
 function startTrial() {
 
@@ -128,18 +122,17 @@ function startTrial() {
   $(elems).css('opacity', '0').each(function (i) {
     elem = elems[i];
 
-    x_c = choice_dist * Math.cos(angle) + center_left; //choice_dist = radius
-    // console.log(x);
-    y_c = choice_dist * Math.sin(angle) + center_top; //choice_dist = radius
-    // console.log(y);
+    x_c = choice_dist * Math.cos(angle) + center_left; 
+    y_c = choice_dist * Math.sin(angle) + center_top; 
+    // console.log(y_c);
 
     $(elem).css("background-color", "#472f7d");
     $(elem).off("click");
 
     $(elem).animate({
       'position': 'absolute',
-      'width': choice_width + 'px', //choice_width = width
-      'height': choice_width + 'px', // choice_width == height
+      'width': choice_width + 'px', 
+      'height': choice_width + 'px', 
       'left': x_c + 'px',
       'top': y_c + 'px',
       'opacity': '1'
@@ -149,20 +142,19 @@ function startTrial() {
   });
 
   $('.start_note').css('visibility', 'hidden');
-  $('.experiment_note').css('visibility', 'visible');
+  $('.trial_note').css('visibility', 'visible');
   count_Click = 0;
   mt = [];
   dist_Click = [];
-  beginExp();
-
+  beginClick();
 }
 
-function beginExp(prev_circle) {
+function beginClick(prev_circle) {
   curr_time = Date.now();
 
   if (count_Click === 16) {
-    alert('The trial has ended. Choose different widths and distances and continue trials');
-    $('.experiment_note').css('visibility', 'hidden');
+    alert('A round of trial has ended. Select different widths and distances to make sense of the impact on task difficulty and the time to point at a target.');
+    $('.trial_note').css('visibility', 'hidden');
     $('.start_note').css('visibility', 'visible');
   } else {
     var filteredElems = _.without(elems, prev_circle);
@@ -180,7 +172,9 @@ function beginExp(prev_circle) {
       $(rand_ele).css("background-color", "#472f7d");
       next_time = Date.now();
       mt.push(next_time - curr_time);
-      beginExp(rand_ele);
+    //   trialData.push(mt)
+      printMT(mt);
+      beginClick(rand_ele);
     });
   }
 }
@@ -195,12 +189,25 @@ function dist_circle(past, current) {
   return dist;
 }
 
-function saveResult(curr_time, next_time, dist, w){
-    var data = [];
-    data.push(Math.log2(dist/w + 1), next_time - curr_time);
-    trialResults.push(data);
-    console.log(trialResults);
-  }
+function printMT(mt){
+    var info = d3.select("#MTime")
+    .append("div")
+    .attr("class", "mtInfo");
+    
+    info.html("<div><b>" +"Click" + (count_Click - 1) + "</b>:  "+ mt[count_Click-1]);
+}
+
+
+function emptyMT(mt){
+    var info = d3.selectAll(".mtInfo").remove();
+}
+
+
+
+
+
+
+
 
 
 
@@ -208,20 +215,20 @@ function saveResult(curr_time, next_time, dist, w){
 /////Small Scatter Plot///////
 /////////////////////////////////////////////////////
 
-function loadDataset(ds) {
-    var dataset = null;
-    switch (ds) {
-        case "dataset1":
-            dataset = dataset1;
-            break;
-        case "dataset2":
-            dataset = dataset2;
-            break;
-    }
-    drawScatterPlot1(dataset);
-    drawScatterPlot2(dataset);
-    drawScatterPlot3(dataset);;
-}
+// function loadDataset(ds) {
+//     var dataset = null;
+//     switch (ds) {
+//         case "dataset1":
+//             dataset = dataset1;
+//             break;
+//         case "dataset2":
+//             dataset = dataset2;
+//             break;
+//     }
+//     drawScatterPlot1(dataset);
+//     drawScatterPlot2(dataset);
+//     drawScatterPlot3(dataset);;
+// }
 
 
 ////////////////////////////////////
