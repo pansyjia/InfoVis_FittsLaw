@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SI 649 Project: Fitts's Law </title>
+    <link rel="stylesheet" href="css/skeleton.css" />
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.11/lodash.js"></script>
+</head>
+
+
+<body>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"
+            integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+            crossorigin="anonymous"></script>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="https://d3js.org/topojson.v2.min.js"></script>
+    <script src="https://d3js.org/d3-path.v1.min.js"></script>
+    <script src="https://d3js.org/d3-shape.v1.min.js"></script>
+    <script type="text/javascript" src="js/draw.js"></script>
+
+    <div class="row">
+        <div class="ten columns offset-by-one alpha" style="border-bottom:2px solid #494949;margin-bottom:30px;">
+        <h1>Fitts's Law</h1>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="ten columns offset-by-one alpha">
+                <h3>Introduction</h3>
+                <p> Fitts' law (Fitts's Law) is one of the most well know principles in the field of Human-computer Interaction. </p>
+                <img src="img/formula.png" class= "formula" alt="Formula" height="80">
+                <p> The law gives a relation for the mean time to point (MT) at a target of given size (W) in a given distance (D). It is a common sense that it takes more time to hit a target if the target is smaller or further away. However, within a limited space, such as a computer or mobile phone screen, it is necessary to find a good balance in terms of target size and distance.</p>
+                <p> Fitts’s law also tells a linear relationship between task difficulty (ID) and movement time (MT), which inspires User Interface designers to make a tradeoff between speed and accuracy when designing a pointing task. </p>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="ten columns offset-by-one alpha">
+                <h3>Pointing Task One</h3>
+                <p>For each trial, click on the green target. Perform as fast and as accurately as you can. </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="seven columns offset-by-one alpha question">
+                <div class="five columns offset-by-one alpha">
+                <div id="slider-1" class="slider-1">
+                    <div id="target-1" class="target"></div>
+                    <div id="target-2" class="target"></div>
+                    <div id="target-3" class="target"></div>
+                    <div id="target-4" class="target"></div>
+                    <div id="target-5" class="target"></div>
+                    <div id="target-6" class="target"></div>
+                    <div id="target-7" class="target"></div>
+                    <div id="target-8" class="target"></div>
+                    <div id="target-9" class="target"></div>
+                </div>
+             </div>
+            </div>
+            <div class="three columns alpha question">
+                <fieldset>
+                    <h6 class="text-center">Width and Distance Choices</h6>
+                        <div class="form-group">
+                            <legend class="text-center">Select Distance</legend>
+                            <div id="distance" class="checkbox text-center">
+                                <label>
+                                    <input type="radio" name="distance" value="100" checked="checked"> 100
+                                </label>
+                                <label>
+                                    <input type="radio" name="distance" value="150"> 150
+                                </label>
+                                <label>
+                                    <input type="radio" name="distance" value="200"> 200
+                                </label>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="form-group">
+                                <legend class="text-center">Select Width</legend>
+                                <div id="width" class="checkbox text-center">
+                                <label>
+                                    <input type="radio" name="width" value="25" checked="checked"> 25
+                                </label>
+                                <label>
+                                    <input type="radio" name="width" value="50"> 50
+                                </label>
+                                <label>
+                                    <input type="radio" name="width" value="75"> 75
+                                </label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-lg-10">
+                                <br>
+                                <button type="submit" class="trial" onclick="startTrial()">START TRIAL</button>
+                            </div>
+                     </div>
+                </fieldset>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="ten columns offset-by-one alpha">
+                    <h3>Trial Data</h3><br/>
+            </div>
+        </div>
+        <div class="row">
+                <div class="eight columns offset-by-two alpha">
+                    <textarea class="eight columns offset-by-two alpha" id="dataTable">                Width                Distance                Index_of_Difficulty                Movement_Time
+                    </textarea>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+        <div class="row">
+            <div class="ten columns offset-by-one alpha">
+                <h3> Experimental Data </h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="three columns offset-by-one alpha">
+                <input type="button" value="Dataset1" id="btnDataset1" onclick="loadDataset('dataset1')" />
+                <input type="button" value="Dataset2" id="btnDataset2" onclick="loadDataset('dataset2')" />
+            </div>
+        </div>
+        <div class="row" style="margin-top:20px;">
+            <div class="ten columns offset-by-one alpha">
+                <div class="one-half column">
+                   <h6>scatter plot 1</h6>
+                </div>
+                <div class="one-half column">
+                    <h6>scatter plot 2</h6>
+                </div>
+            </div>
+            <div class="ten columns offset-by-one alpha">
+                <div class="one-half column question" id="divScatter1">
+                    <svg width="95%" height="95%" id="scatterTransition1">
+                    </svg>
+                </div>
+                <div class="one-half column question" id="divScatter2">
+                    <svg width="95%" height="95%" id="scatterTransition2">
+                    </svg>
+                </div>
+                
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="eight columns offset-by-two alpha">
+                <h3> Scatter Plot Matrix </h3>
+                </div>
+            </div>
+
+            <div class="six columns offset-by-three alpha question" id="divScatter3">
+                    <svg width="94%" height="95%" id="scatterTransition3">
+                    </svg>
+            </div>
+
+    </div>
+</body>
+</html>

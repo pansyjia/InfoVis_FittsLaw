@@ -1,0 +1,161 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:300,400,700);
+
+body {
+    background: #eeeeee;
+    font-family:  "Roboto", helvetica, arial,sans-serif;
+}
+
+.container{
+    padding:10px;
+}
+
+h1{
+    color:#000000;
+    font-family: "Lucida Console", Consolas, "Courier New";
+    font-size:40px;
+}
+
+h3{
+    color:#000000;
+    font-family: "Courier New";
+    font-size:32px;
+}
+
+h5 {
+    font-size: 20px;
+    font-weight: bold;
+    font-family: Consolas;
+}
+
+
+h6 {
+    font-size: 18px;
+    font-weight: bold;
+    font-family: "Lucida Console";
+}
+
+legend {
+    font-size: 18px;
+    font-weight: 400;
+}
+
+
+p{
+    color:#404040;
+    font-size:18px;
+}
+
+label input {
+    margin-bottom: 10px;
+}
+
+.question {
+    background: white;
+    border: 1px solid #bdbdbd;
+    min-height:200px;
+    margin-bottom:30px;
+}
+
+
+/* .chartholder{
+    width: 30%;
+    margin-right:3%;
+    float:left;
+    text-align:center;
+    padding-bottom:40px;
+} */
+
+
+.text {
+    font-size: 14px;
+    font-weight: bold;
+    font-family: Consolas;
+}
+
+
+.line {
+    fill: none;
+    stroke: #5b717c;
+    stroke-width: 2px;
+}
+
+.toolTip {
+    position: absolute;
+    display: none;
+    min-width: 80px;
+    height: auto;
+    background: none repeat scroll 0 0 #ffffff;
+    border: 1px solid #069ea8;
+    padding: 14px;
+    text-align: center;
+}
+
+fieldset {
+    border: 0px;
+    margin: 30px 20px;
+}
+
+.slider-1 {
+    float: none;
+    position: relative;
+    width: 450px;
+    min-height: 450px;
+    background-color: #ffffff;
+    margin: 20px 100px;
+}
+
+.target {
+  position: absolute;
+  background-color: #ffffff;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+}
+
+.regression {
+    stroke-width: 2px;
+    stroke: steelblue;
+    stroke-dasharray: 10,5;
+}
+
+.line {
+    stroke-width: 2px;
+    stroke: steelblue;
+    stroke-dasharray: 10,5;
+}
+
+button {
+    background-color: #ffffff !important; 
+    color: #140078 !important;
+    border: 1px solid #808080 !important;
+}
+
+button:hover  {
+    background-color: #140078!important; 
+    color: #ffffff !important;
+    border: 0.5px solid #808080!important;
+}
+
+#divScatter1 {
+  height: 450px;
+}
+
+#divScatter2 {
+    height: 450px;
+  }
+
+#divScatter3 {
+    height: 500px;
+}
+
+text {
+    font-size: 11px;
+}
+
+svg {
+    margin: 2% 1% 2% 2% !important;
+}
+
+.formula {
+    border: 0.5px solid #808080!important;
+}
