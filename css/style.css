@@ -168,3 +168,11 @@ svg {
     margin-left: 2px;
     margin-right: 4px;
 }
+
+
+div .info-label{
+    margin-left: 90px;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    font-weight: 500;
+}

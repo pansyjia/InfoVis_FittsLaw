@@ -194,7 +194,7 @@ function printMT(mt){
     .append("div")
     .attr("class", "mtInfo");
     
-    info.html("<div><b>" +"Click" + (count_Click - 1) + "</b>:  "+ mt[count_Click-1]);
+    info.html("<div>" +"Click  #" + (count_Click - 1) + ":  "+ "<b>" + mt[count_Click-1]) + "</b>";
 }
 
 
