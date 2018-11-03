@@ -498,8 +498,8 @@ function drawScatterPlot3(data) {
                 .attr("x2", x(max))
                 .attr("y2", y( (max * lr.slope) + lr.intercept ))
                 .style("stroke", "lightgray");
-    console.log(x(0));
-    console.log(y(lr.intercept));
+    // console.log(x(0));
+    // console.log(y(lr.intercept));
 }
 
 

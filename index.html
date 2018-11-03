@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="css/skeleton.css" />
     <link rel="stylesheet" href="css/normalize.css" />
     <link rel="stylesheet" href="css/style.css" />
-    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.11/lodash.js"></script>
 </head>
 
@@ -32,17 +31,41 @@
         <div class="row">
             <div class="ten columns offset-by-one alpha">
                 <h3>Introduction</h3>
-                <p> Fitts' law (Fitts's Law) is one of the most well know principles in the field of Human-computer Interaction. </p>
-                <img src="img/formula.png" class= "formula" alt="Formula" height="80">
-                <p> The law gives a relation for the mean time to point (MT) at a target of given size (W) in a given distance (D). It is a common sense that it takes more time to hit a target if the target is smaller or further away. However, within a limited space, such as a computer or mobile phone screen, it is necessary to find a good balance in terms of target size and distance.</p>
-                <p> Fitts’s law also tells a linear relationship between task difficulty (ID) and movement time (MT), which inspires User Interface designers to make a tradeoff between speed and accuracy when designing a pointing task. </p>
-            </div>
+                <p> Fitts' law (Fitts's Law) is one of the most well-studied principles in the field of Human-computer Interaction. The law gives a relation for the movement time to point (MT) at a target of given size (W) in a given distance (D). </p>
+
+                <div class="six columns question">
+                <br>
+                <img src="img/formula.png" class= "formula" alt="Formula" height="80"> 
+                <img src="img/variable.png" class= "variable" alt="Variable" height="260"> 
+                </div>
+
+                <div class="five columns offset-by-one" id="variables">
+                        <p><b>MT</b> is the movement time</p>
+                        <p><b>ID</b> is based on the specific task (e.g., moving from one position to another)</p>
+                        <p><b>a</b> is the empirically determined constants for a particular pointing technique</p>
+                        <p><b>b</b> is the empirically determined slope or rate of change for a particular pointing technique</p>
+                        <p><b>D</b>(or A, amplitude) is the distance to the target</p>
+                        <p><b>W</b> is the width of the target</p>  
+                        <p><b>log(x)</b> determines the power value needed to raise 2 to equal x</p>     
+                </div>
         </div>
+    </div>
+
+    <div class="row">
+            <div class="ten columns offset-by-one alpha">
+                    <p>It is a common sense that it takes more time to hit a target if the target is smaller or further away. However, within a limited space, such as a computer or mobile phone screen, it is necessary to find a good balance in terms of target size and distance.</p>
+                    <p> Fitts’s law also tells a linear relationship between task difficulty (ID) and movement time (MT), which inspires User Interface designers to make a tradeoff between speed and accuracy when designing a pointing task. </p>
+            </div>
+    </div>
+
 
 
         <div class="row">
             <div class="ten columns offset-by-one alpha">
-                <h3>Pointing Task</h3>
+                <br>
+                <br>
+                <h3>A Pointing Task</h3>
+                <p>Let's simulate a pointing task. First, select the width and distance for a target. Then, click the "START TRIAL" button to get started. The time consumed to complete each pointing task will be displayed underneath. </p>
                 <p>For each trial, click on the green target. Perform as fast and as accurately as you can. </p>
             </div>
         </div>
@@ -105,43 +128,42 @@
 
             </div>
         </div>
-        <!-- <div class="row">
-            <div class="ten columns offset-by-one alpha">
-                    <h3>Trial Data</h3><br/>
-            </div>
-        </div> -->
+     
         <div class="row">
                 <div id="infoPanel" class="panel four columns offset-by-four alpha question">
-                <div class="info-label align-center">Movement Time (milliseconds)</div>
+                <div class="info-label">Movement Time (milliseconds)</div>
                     <div class="info-group four columns offset-by-four alpha">
-                    <div class="info align-center"><div id="MTime"> </div></div>
+                    <div class="info"><div id="MTime"> </div></div>
                     </div>
                 </div>
-            </div>
         </div>
-
+      
 
 
 
 
         <div class="row">
             <div class="ten columns offset-by-one alpha">
-                <h3> Experimental Data </h3>
+                    <br>
+                    <br>
+                    <h3>What does Fitts's Law tell us?</h3>
             </div>
         </div>
-        <div class="row">
-            <!-- <div class="three columns offset-by-one alpha">
-                <input type="button" value="Dataset1" id="btnDataset1" onclick="loadDataset('dataset1')" />
-                <input type="button" value="Dataset2" id="btnDataset2" onclick="loadDataset('dataset2')" />
-            </div> -->
+
+        <div class="ten columns offset-by-one alpha">
+                <p> The plots below show how do a target size and distance affect the pointing task difficulty. The third scatter plot specifies a linear correlation of movement time to the index of difficulty. You can hover over each circle to see detailed information.</p>
+                <p> The open-access dataset is provided by scholars from UC Berkeley and UC San Francisco (Ken Goldberg, et al). Specifically, the data used here is collected from controlled experiments. In the experiments, the target distance (D) and width (W) vary (heterogeneous) between targets.</p>
         </div>
+       
         <div class="row" style="margin-top:20px;">
             <div class="ten columns offset-by-one alpha">
                 <div class="one-half column">
-                   <h6>scatter plot 1</h6>
+                   <h6>Distance vs. Index of Difficulty</h6>
+                   <p></p>
                 </div>
                 <div class="one-half column">
-                    <h6>scatter plot 2</h6>
+                    <h6>Width vs. Index of Difficulty</h6>
+                    <p></p>
                 </div>
             </div>
             <div class="ten columns offset-by-one alpha">
@@ -158,16 +180,43 @@
         </div>
 
         <div class="row">
-            <div class="eight columns offset-by-two alpha">
-                <h3> Scatter Plot Matrix </h3>
-                </div>
+            <br>
+            <div class="six columns offset-by-three alpha">
+                <h6> Index of Difficulty vs. Movement Time</h6>
+                <p>Fitts's Law states a linear relationship between task difficulty and movement time. </p>
             </div>
-
             <div class="six columns offset-by-three alpha question" id="divScatter3">
                     <svg width="94%" height="95%" id="scatterTransition3">
                     </svg>
             </div>
-
     </div>
+
+    <div class="row">
+            <div class="ten columns offset-by-one alpha">
+                    <br>
+                    <br>
+                    <h3>References</h3>
+            </div>
+            <div class="ten columns offset-by-one alpha">
+                    <p>1. Fitts, P. M. (1954). The information capacity of the human motor system in controlling the amplitude of movement. Journal of Experimental Psychology, 47(6), 381-391. doi:10.1037/h0055392</p>
+                    <p>2. Ken Goldberg, Siamak Faridani and Ron Alterovitz. (2013). Two Large Open-Access Datasets for Fitts’ Law of Human Motion and a Succinct Derivation of the Square-Root Variant. http://automation.berkeley.edu/fitts-dataset/fitts-paper.pdf </p>
+                    <p>3. MacKenzie, I. S. (2018). Fitts' law. In K. L. Norman & J. Kirakowski (Eds.), Handbook of human-computer interaction, pp. 349-370. Hoboken, NJ: Wiley. doi:10.1002/9781118976005 2</p>
+                    <p>4. Simon Wallner, Otilia Danet, Trine Eilersen, and Jesper Tved. (2012). An Interactive Visualisation of Fitts's Law with JavaScript and D3. http://simonwallner.at/ext/fitts/ </p>
+            </div>
+    </div>
+</div>
+
 </body>
+
+
+<footer>
+    <div class="four columns offset-by-five row">
+        <a href="https://github.com/pansyjia/InfoVis_FittsLaw" class="githubRepo">Github Repository of the Project</a>   
+    </div>
+      <br>
+      <br>
+    <div class="four columns offset-by-five row">
+        <div class="copyright"> &copy 2018 Siyu Jia All Rights Reserved </div>
+    </div>
+</footer>
 </html>

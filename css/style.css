@@ -164,9 +164,10 @@ svg {
 
 .formula {
     background: white;
-    border: 1px solid #bdbdbd;
-    margin-left: 2px;
+    /* border: 1px solid #bdbdbd; */
+    margin-left: 60px;
     margin-right: 4px;
+    display: block;
 }
 
 
@@ -175,4 +176,19 @@ div .info-label{
     margin-top: 10px;
     margin-bottom: 15px;
     font-weight: 500;
+}
+
+.githubRepo .copyright {
+    margin: 20px 20px;
+    font-size: 18px;
+    color: #404040;
+} 
+
+footer{
+    margin: 50px 20px;
+}
+
+#variables p {
+    margin-top: 8px;
+    margin-bottom: 8px;
 }
